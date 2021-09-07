@@ -2,7 +2,7 @@ function Login() {
   return (
     <>
         <section className='login'>
-          <img className='login__icon' />
+          {/* <img className='login__icon' /> */}
           <h3 className='login__title'>Рады видеть</h3>
           <form className='login__form'>
             <label for='email'>E-mail</label>
@@ -11,7 +11,7 @@ function Login() {
             <input id='password' type='password' />
             <button type='submit'>Войти</button>
           </form>
-          <p>Ещё не зарегестрированы? <a href='#'>Регистрация</a></p>
+          <p>Ещё не зарегестрированы? <a href='asd'>Регистрация</a></p>
         </section>
     </>
   )
