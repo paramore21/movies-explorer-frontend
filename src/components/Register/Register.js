@@ -1,8 +1,9 @@
+import logo from '../../images/logo.png';
 function Register() {
   return (
     <>
         <section className='register'>
-          {/* <img className='register__icon' /> */}
+          <img className='register__icon' alt='Логотип' src={logo}/>
           <h3 className='register__title'>Добро пожаловать</h3>
           <form className='register__form'>
             <label for='name'>Имя</label>
