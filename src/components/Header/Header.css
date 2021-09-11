@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 70px;
+  background-color: #073042;
+}
+
+.header__register-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__login-button {
+  color: #000000;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #2BE080;
+  border: none;
+  height: 32px;
+  border-radius: 3px;
+}

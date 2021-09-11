@@ -1,4 +1,4 @@
-.login {
+.register {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -7,7 +7,7 @@
   width: 396px;
 }
 
-.login__title {
+.register__title {
   margin: 40px 0 0 0;
   font-family: 'Inter';
   font-weight: 500;
@@ -16,22 +16,22 @@
   color: #000;
 }
 
-.login__form {
+.register__form {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
 }
 
-.login__label {
+.register__label {
   color: #A0A0A0;
   font-family: 'Inter';
   font-weight: 400;
   font-style: normal;
   font-size: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.login__input {
+.register__input {
   background-color: #F9F9F9;
   height: 46px;
   outline: none;
@@ -41,15 +41,15 @@
   width: 396px;
   padding: 15px;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-family: 'Inter';
   font-weight: 400;
   font-style: normal;
   font-size: 13px;
 }
 
-.login__button {
-  margin-top: 160px;
+.register__button {
+  margin-top: 65px;
   background-color: #3456F3;
   border-radius: 3px;
   font-family: 'Inter';
@@ -61,14 +61,14 @@
   border: none;
 }
 
-.login__button:hover {
+.register__button:hover {
   text-decoration: none;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
 }
 
-.login__enter-text {
+.register__enter-text {
   text-align: center;
   color: #A0A0A0;
   font-family: 'Inter';
@@ -78,12 +78,12 @@
   margin: 16px auto;
 }
 
-.login__enter-link {
+.register__enter-link {
   text-decoration: none;
   color: #3456F3;
 }
 
-.login__enter-link:hover {
+.register__enter-link:hover {
   text-decoration: none;
   cursor: pointer;
   opacity: 0.7;
