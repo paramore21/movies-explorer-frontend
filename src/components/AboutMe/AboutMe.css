@@ -10,6 +10,7 @@
     'text'
     'bio'
     'social';
+
   }
 
   .about-me__subtitle {
@@ -101,7 +102,7 @@
   mix-blend-mode: normal;
   margin: 26px 0 0 0;
   grid-area: bio;
-  width: 600px;
+  width: 100%;
 }
 
 .about-me__social {
@@ -127,5 +128,4 @@
   line-height: 17px;
   color: #000000;
   text-decoration: none;
-
 }
