@@ -1,6 +1,12 @@
 @media screen and (min-width: 320px){
   .about-me {
-    padding: 70px 14px;
+    padding: 70px 14px 0;
+  }
+
+  .about-me__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 30px;
   }
 
   .about-me__container {
@@ -10,17 +16,46 @@
     'text'
     'bio'
     'social';
+  }
 
+  .about-me__img {
+    margin-top: 60px;
+    width: 292px;
+    height: 352px;
   }
 
   .about-me__subtitle {
-    margin-top: 40px;
+    margin: 40px 0 20px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__text {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 0;
+  }
+
+  .about-me__bio {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 20px 0 0;
+  }
+
+  .about-me__social {
+    margin: 50px 0 0 0;
   }
 }
 
 @media screen and (min-width: 1280px){
   .about-me {
     padding: 110px 70px;
+  }
+
+  .about-me__title {
+    font-size: 22px;
+    line-height: 27px;
+    padding-bottom: 23px;
   }
 
   .about-me__container {
@@ -34,10 +69,33 @@
   }
 
   .about-me__subtitle {
+    font-size: 50px;
+    line-height: 58px;
     margin: 0;
   }
+
+  .about-me__img {
+    width: 270px;
+    height: 327px;
+  }
+
+  .about-me__text {
+    font-size: 18px;
+    line-height: 20px;
+    margin: 18px 0 0;
+  }
+
+  .about-me__bio {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 26px 0 0;
+  }
   
+  .about-me__social {
+    margin: 100px 0 0 0;
+  }
 }
+
 .about-me {
   display: flex;
   flex-direction: column;
@@ -47,11 +105,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 22px;
-  line-height: 27px;
   letter-spacing: -0.04em;
   color: #000000;
-  padding-bottom: 23px;
   border-bottom: 1px solid #000000;
   margin: 0;
 }
@@ -64,15 +119,11 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 50px;
-  line-height: 58px;
   letter-spacing: -0.04em;
   color: #000000;
 }
 
 .about-me__img {
-  width: 270px;
-  height: 327px;
   box-sizing: border-box;
   object-fit: cover;
   border-radius: 10px;
@@ -84,11 +135,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 20px;
   color: #000000;
   mix-blend-mode: normal;
-  margin: 18px 0 0 0;
   grid-area: text;
 }
 
@@ -96,17 +144,13 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 22px;
   color: #000000;
   mix-blend-mode: normal;
-  margin: 26px 0 0 0;
   grid-area: bio;
   width: 100%;
 }
 
 .about-me__social {
-  margin: 100px 0 0 0;
   padding: 0;
   display: flex;
   grid-area: social;

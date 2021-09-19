@@ -1,6 +1,25 @@
 @media screen and (min-width: 320px) {
   .portfolio {
-    padding: 0 14px 125px 14px;
+    padding: 25px 14px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .portfolio__link-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__links {
+    margin-top: 20px;
+  }
+
+  .portfolio__link-icon {
+    width: 18px;
+    height: 28px;
   }
 }
 
@@ -8,7 +27,18 @@
   .portfolio {
     padding: 0 70px 125px 70px;
   }
+
+  .portfolio__title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .portfolio__link-text {
+    font-size: 30px;
+    line-height: 50px;
+  }
 }
+
 .portfolio {
   display: flex;
   flex-direction: column;
@@ -19,8 +49,6 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
   color: #A0A0A0;
   mix-blend-mode: normal;
   width: 626px;
@@ -52,8 +80,6 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
-  line-height: 50px;
   letter-spacing: -0.04em;
   color: #000000;
   margin: 20px 0;
