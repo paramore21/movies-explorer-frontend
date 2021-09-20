@@ -3,7 +3,7 @@ function Promo (){
   return (
     <section className='promo'>
       <h3 className='promo__title'>Учебный проект
-      студента&nbsp;факультета Веб-разработки.</h3>
+      студента факультета Веб-разработки.</h3>
       <img className='promo__logo' src={logo} alt='Логотип проекта'/>
     </section>
   )
