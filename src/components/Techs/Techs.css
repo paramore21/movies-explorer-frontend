@@ -32,6 +32,37 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .techs {
+    padding: 90px 50px;
+  }
+
+  .techs__title {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .techs__subtitle {
+    font-size: 50px;
+    line-height: 58px;
+    margin-top: 80px;
+  }
+
+  .techs__text {
+    font-size: 12px;
+    line-height: 18px;
+    width: 460px;
+  }
+
+  .techs__progress {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 85px 20px 0 10px;
+    width: 648px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .techs {
     padding: 110px 70px;

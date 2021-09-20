@@ -62,7 +62,7 @@
   .about-project__info {
     grid-template-areas: 'title1 title2'
                           'text1 text2';
-    margin-top: 70px;
+    margin: 70px 0 40px;
     grid-template-columns: repeat(2, 319px);
     column-gap: 30px;
   }

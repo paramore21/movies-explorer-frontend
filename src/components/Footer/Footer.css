@@ -28,6 +28,27 @@
   }
 }
 
+@media screen and (min-width: 768px){
+  .footer {
+    padding: 45px 30px 20px;
+  }
+
+  .footer__nav-year {
+    margin-top: 0;
+  }
+  
+  .footer__nav {
+    margin: 0;
+    flex-direction: row;
+  }
+
+  .footer__nav-links {
+    flex-direction: row;
+    margin-top: 20px;
+    width: 263px;
+  }
+}
+
 @media screen and (min-width: 1280px){
   .footer {
     padding: 79px 70px 20px 70px;

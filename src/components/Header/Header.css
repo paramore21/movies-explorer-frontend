@@ -48,13 +48,18 @@
   
   .header__login-button {
     height: 32px;
+    width: 76px;
     font-size: 12px;
-    width: 54px;
-    height: 26px;
   }
   
   .header__register-button {
     font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1440px){
+  .header {
+    margin: 0 auto;
   }
 }
 
