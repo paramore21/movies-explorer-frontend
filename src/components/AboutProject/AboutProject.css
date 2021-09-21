@@ -102,7 +102,7 @@
   }
 
   .about-project__info {
-    grid-template-rows: 24px 26px;
+    grid-template-rows: 24px 40px;
     row-gap: 26px;
     grid-template-columns: repeat(2, 550px);
     column-gap: 40px;
@@ -113,6 +113,7 @@
     grid-template-columns: 228px 912px;
     column-gap: 0;
     row-gap: 14px;
+    margin-top: 40px;
   }
 
   .about-project__title {
@@ -123,6 +124,7 @@
   .about-project__text {
     font-size: 14px;
     line-height: 20px;
+    margin: 0;
   }
 
   .about-project__progress-item {
@@ -137,7 +139,7 @@
 }
 
 .about-project__title {
-  font-family: Inter;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: normal;
   letter-spacing: -0.04em;

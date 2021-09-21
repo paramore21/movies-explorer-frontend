@@ -5,6 +5,7 @@ import Register from '../Register/Register'
 import Main from "../Main/Main";
 import Header from '../Header/Header'
 import Footer from "../Footer/Footer";
+import Movies from "../Movies/Movies";
 function App() {
   return (
     <div className="App">
@@ -16,9 +17,7 @@ function App() {
           <Login />
         </Route>
       </Switch>
-      <Header />
-      <Main />
-      <Footer />
+      <Movies />
     </div>
   );
 }

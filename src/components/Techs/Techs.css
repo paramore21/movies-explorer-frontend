@@ -65,7 +65,7 @@
 
 @media screen and (min-width: 1280px) {
   .techs {
-    padding: 110px 70px;
+    padding: 100px 70px;
   }
 
   .techs__title {
@@ -77,6 +77,7 @@
   .techs__subtitle {
     font-size: 50px;
     line-height: 58px;
+    margin: 90px 0 25px;
   }
 
   .techs__text {
@@ -89,7 +90,7 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
-    margin: 100px 225px;
+    margin: 100px 225px 0;
     width: 690px;
   }
 }
