@@ -1,11 +1,13 @@
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 function SearchForm(){
   return(
     <section className='search-form'>
       <div className='search-form__input-container'>
-        <p className='search-form__input-icon'></p>
+        <button className='search-form__input-icon'></button>
         <input className='search-form__input' type='text' placeholder='Фильм' name='search-form' />
         <button className='search-form__input-button' type='submit'>Найти</button>
       </div>
+      <FilterCheckbox />
     </section>
   )
 }

@@ -68,7 +68,7 @@
   outline: none;
   border: none;
   color: #FFFFFF;
-  font-family: 'Inter';
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
@@ -76,7 +76,7 @@
 
 .header__login-button {
   color: #000000;
-  font-family: 'Inter';
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
