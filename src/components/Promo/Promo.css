@@ -1,6 +1,8 @@
 @media screen and (min-width: 320px){
   .promo {
     padding: 183px 10px 40px;
+    max-width: 320px;
+    overflow: hidden;
   }
 
   .promo__title {
@@ -21,7 +23,7 @@
 
 @media screen and (min-width: 768px){
   .promo {
-    padding: 300px 44px 65px;
+    padding: 290px 44px 70px;
   }
 
   .promo__title {
@@ -53,7 +55,7 @@
     align-self: flex-end;
     width: 722px;
     height: 244px; 
-    margin: 100px 0 65px 0;
+    margin: 100px 0 60px 0;
   }
 }
 
@@ -69,4 +71,7 @@
   font-style: normal;
   font-weight: normal;
   color: #fff;
+}
+
+.promo__logo {
 }

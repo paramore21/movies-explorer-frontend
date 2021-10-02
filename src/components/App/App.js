@@ -5,6 +5,7 @@ import Register from '../Register/Register'
 import Main from "../Main/Main";
 import Header from '../Header/Header'
 import Footer from "../Footer/Footer";
+import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 function App() {
   return (
@@ -17,7 +18,13 @@ function App() {
           <Login />
         </Route>
       </Switch>
-      <Movies />
+        <Route path='/' exact='/'>
+            <Main />
+        </Route>
+        <Route path='/movies'>
+            <Movies />
+            <Error />
+        </Route>
     </div>
   );
 }

@@ -2,10 +2,10 @@ import icon from '../../images/logo.png';
 function Header() {
   return (
     <section className='header'>
-      <img className='header__icon' alt='Логотип' src={icon} />
+      <a href={'/'} className='header__link'><img className='header__icon' alt='Логотип' src={icon} /></a>
       <div className='header__buttons'>
-        <button type='button' className='header__register-button'>Регистрация</button>
-        <button type='button' className='header__login-button'>Войти</button>
+        <a href={'/signup'} className='header__register-button'>Регистрация</a>
+        <a href={'/signin'} className='header__login-button'>Войти</a>
       </div>
     </section>
   )
