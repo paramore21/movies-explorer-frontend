@@ -64,6 +64,10 @@
   background-color: #073042;
 }
 
+.header_light {
+  background-color: transparent;
+}
+
 .header__register-button {
   background-color: transparent;
   outline: none;
@@ -74,6 +78,10 @@
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
+}
+
+.header__register-button_light {
+  display: none;
 }
 
 .header__login-button {
@@ -91,6 +99,16 @@
   text-decoration: none;
   width: 76px;
   height: 32px;
+}
+
+.header__login-button_light {
+  border: 2px solid #AAAAAA;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-image: url('../../images/account-icon.svg');
+  background-repeat: no-repeat;
+  background-position: left;
+  background-color: transparent;
 }
 
 .header__buttons {
