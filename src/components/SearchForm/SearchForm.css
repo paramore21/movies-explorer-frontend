@@ -36,6 +36,10 @@
     line-height: 34px;
     text-align: center;
   }
+
+  .search-form__input-icon {
+    display: block;
+  }
 }
 
 .search-form {

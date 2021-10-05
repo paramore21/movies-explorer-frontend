@@ -107,8 +107,10 @@
   border-radius: 50px;
   background-image: url('../../images/account-icon.svg');
   background-repeat: no-repeat;
-  background-position: left;
+  background-position: left 10px center;
   background-color: transparent;
+  padding-left: 15px;
+  width: 100px;
 }
 
 .header__buttons {
