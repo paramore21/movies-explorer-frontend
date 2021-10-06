@@ -9,24 +9,24 @@ function Movies(){
     <>
       <Header />
       <SearchForm />
-    <section className='movies'>
-      <section className='movies__cards'>
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
-        <MoviesCardList />
+      <section className='movies'>
+        <section className='movies__cards'>
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+          <MoviesCardList />
+        </section>
+        <button className='movies__button' type='button'>Ещё</button>
       </section>
-      <button className='movies__button' type='button'>Ещё</button>
-    </section>
-    <Footer />
+      <Footer />
     </>
   )
 }

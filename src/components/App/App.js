@@ -7,6 +7,7 @@ import Header from '../Header/Header'
 import Footer from "../Footer/Footer";
 import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
+import Profile from "../Profile/Profile";
 function App() {
   return (
     <div className="App">
@@ -19,11 +20,16 @@ function App() {
         </Route>
       </Switch>
         <Route path='/' exact='/'>
-            <Main />
+          <Main />
         </Route>
         <Route path='/movies'>
-            <Movies />
-            <Error />
+          <Movies />
+        </Route>
+        <Route path='/error'>
+          <Error />
+        </Route>
+        <Route path='/profile'>
+          < Profile />
         </Route>
     </div>
   );
