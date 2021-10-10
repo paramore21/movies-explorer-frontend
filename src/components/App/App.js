@@ -3,11 +3,10 @@ import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Main from "../Main/Main";
-import Header from '../Header/Header'
-import Footer from "../Footer/Footer";
 import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
+import SavedMovies from "../SavedMovies/SavedMovies";
 function App() {
   return (
     <div className="App">
@@ -19,7 +18,7 @@ function App() {
           <Login />
         </Route>
       </Switch>
-        <Route path='/' exact='/'>
+        <Route path='/' exact>
           <Main />
         </Route>
         <Route path='/movies'>
@@ -31,6 +30,9 @@ function App() {
         <Route path='/profile'>
           < Profile />
         </Route>
+      <Route path='/saved-movies'>
+        <SavedMovies />
+      </Route>
     </div>
   );
 }

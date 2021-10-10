@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../../images/logo.png';
+import icon from "../../images/logo.png";
 function Login() {
   return (
     <section className='login'>
-      <img className='login__icon' alt='Логотип' src={logo} />
+      <a href={'/'} className='login__icon'><img alt='Логотип' src={icon} /></a>
       <h3 className='login__title'>Рады видеть!</h3>
       <form className='login__form'>
         <label for='email' className='login__label'>E-mail</label>
