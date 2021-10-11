@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import {Route, Switch, Redirect, useHistory, useLocation} from 'react-router-dom';
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Main from "../Main/Main";
@@ -7,7 +7,9 @@ import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
+
 function App() {
+  const { pathname } = useLocation()
   return (
     <div className="App">
       <Switch>
@@ -24,7 +26,7 @@ function App() {
         <Route path='/movies'>
           <Movies />
         </Route>
-        <Route path='/error'>
+        <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
           <Error />
         </Route>
         <Route path='/profile'>
