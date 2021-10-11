@@ -54,7 +54,6 @@
     display: flex;
     background-color: #ffffff;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 22px;
     margin: 0;
@@ -72,10 +71,10 @@
     width: 22px;
   }
 
-  .header__burger-item:first-of-type {
-    position: absolute;
-    top: 22px;
+  .header__burger-close-icon {
     align-self: flex-end;
+    margin: 0;
+    list-style: none;
   }
 
   .header__burger-item:last-of-type {
@@ -96,6 +95,39 @@
     line-height: 22px;
     text-align: center;
     color: #000000;
+    text-decoration: none;
+  }
+
+  .header__burger-link_active {
+    border-bottom: 2px solid #000000;
+  }
+
+  .header__burger-account-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    font-size: 14px;
+    text-decoration: none;
+    height: 32px;
+    border: 2px solid #AAAAAA;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-image: url('../../images/account-icon.svg');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-color: transparent;
+    padding-left: 15px;
+    width: 100px;
+  }
+
+  .header__burger-sub-box {
+    margin-top: 106px;
+    padding: 0;
   }
 }
 
