@@ -11,3 +11,10 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.saved-movies-card__button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}

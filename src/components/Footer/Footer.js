@@ -7,13 +7,13 @@ function Footer(){
         <li className='footer__nav-year'>&copy; {currentYear}</li>
         <ul className='footer__nav-links'>
           <li className='footer__nav-links-item'>
-            <a href='#' className='footer__nav-link' target='_blank'>Яндекс.Практикум</a>
+            <a href='https://practicum.yandex.ru/' className='footer__nav-link' target='_blank' rel='noreferrer'>Яндекс.Практикум</a>
           </li>
           <li className='footer__nav-links-item'>
-            <a href='#' className='footer__nav-link' target='_blank'>Github</a>
+            <a href='https://github.com/paramore21' className='footer__nav-link' target='_blank' rel='noreferrer'>Github</a>
           </li>
           <li className='footer__nav-links-item'>
-            <a href='#' className='footer__nav-link' target='_blank'>LinkedIn</a>
+            <a href='https://clck.ru/Vh526' className='footer__nav-link' target='_blank' rel='noreferrer'>LinkedIn</a>
           </li>
         </ul>
       </ul>

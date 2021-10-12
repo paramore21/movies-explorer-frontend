@@ -217,3 +217,10 @@
   color: #000000;
   text-decoration: none;
 }
+
+.about-me__social-item-link:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
