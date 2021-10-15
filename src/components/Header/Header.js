@@ -1,4 +1,4 @@
-import icon from '../../images/logo.png';
+import icon from '../../images/logo.svg';
 import close_icon from '../../images/close-icon.svg';
 import burger_icon from '../../images/burger-icon.svg';
 import {useLocation} from "react-router-dom";

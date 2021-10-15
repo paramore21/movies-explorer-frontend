@@ -86,11 +86,14 @@
   .header__burger-item:last-of-type {
     position: absolute;
     bottom: 22px;
+    right: 0;
+    left: 0;
   }
 
   .header__burger-item {
     list-style: none;
     margin-top: 28px;
+    text-align: center;
   }
 
   .header__burger-link {
