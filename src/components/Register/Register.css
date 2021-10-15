@@ -1,10 +1,25 @@
+@media screen and (min-width: 320px) {
+  .register {
+    align-items: center;
+    margin: 56px 30px;
+  }
+  .register__form {
+    width: 260px;
+  }
+
+}
+
+@media screen and (min-width: 768px){
+  .register {
+    justify-content: center;
+    align-items: start;
+    width: 396px;
+    margin: 70px auto;
+  }
+}
 .register {
   display: flex;
-  justify-content: center;
-  align-items: start;
   flex-direction: column;
-  margin: 70px auto;
-  width: 396px;
 }
 
 .register__title {
@@ -38,7 +53,7 @@
   box-shadow: none;
   border: none;
   border-radius: 8px;
-  width: 396px;
+  width: 100%;
   padding: 15px;
   box-sizing: border-box;
   margin-bottom: 18px;
@@ -75,7 +90,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
-  margin: 16px auto;
+  margin: 16px 0;
 }
 
 .register__enter-link {
