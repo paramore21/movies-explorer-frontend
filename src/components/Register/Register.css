@@ -63,6 +63,11 @@
   font-size: 13px;
 }
 
+.register__input:focus {
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+
 .register__button {
   margin-top: 65px;
   background-color: #3456F3;

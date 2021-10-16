@@ -1,10 +1,26 @@
+@media screen and (min-width: 320px) {
+  .login {
+    align-items: center;
+    margin: 56px 30px;
+  }
+  .login__form {
+    width: 260px;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .login {
+    width: 396px;
+  }
+}
+
 .login {
   display: flex;
   justify-content: center;
-  align-items: start;
+  /*align-items: start;*/
   flex-direction: column;
   margin: 70px auto;
-  width: 396px;
 }
 
 .login__title {
@@ -38,7 +54,6 @@
   box-shadow: none;
   border: none;
   border-radius: 8px;
-  width: 396px;
   padding: 15px;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -46,6 +61,12 @@
   font-weight: 400;
   font-style: normal;
   font-size: 13px;
+  width: 100%;
+}
+
+.login__input:focus {
+  border: 1px solid #000;
+  border-radius: 8px;
 }
 
 .login__button {

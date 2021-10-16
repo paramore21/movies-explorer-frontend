@@ -48,6 +48,31 @@
   }
 }
 
+@media screen and (min-width: 480px){
+  .about-project {
+    align-items: center;
+  }
+
+  .about-project__title {
+    align-self: normal;
+  }
+
+  .about-project__info {
+    grid-template-areas: 'title1 title2'
+                          'text1 text2';
+    grid-template-columns: repeat(2, auto);
+    column-gap: 30px;
+  }
+
+  .about-project__progress {
+    grid-template-columns: 3fr 5fr;
+    column-gap: 0;
+    row-gap: 14px;
+    width: 100%;
+    justify-self: center;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .about-project {
     padding: 90px 50px;
@@ -88,6 +113,20 @@
   .about-project__progress-item {
     font-size: 14px;
     line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 960px){
+  .about-project {
+    align-items: center;
+  }
+
+  .about-project__title {
+    align-self: normal;
+  }
+
+  .about-project__progress {
+    justify-content: center;
   }
 }
 

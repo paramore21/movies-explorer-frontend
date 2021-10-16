@@ -90,6 +90,17 @@
   }
 }
 
+@media screen and (min-width: 1080px){
+  .about-me__container {
+    grid-template-columns: 3fr 2fr;
+    column-gap: 33%;
+  }
+
+  .about-me__img {
+    justify-self: end;
+  }
+}
+
 @media screen and (min-width: 1280px){
   .about-me {
     padding: 110px 70px 80px;
@@ -140,6 +151,16 @@
   }
 }
 
+/*@media screen and (min-width: 1336px) {*/
+/*  .about-me__container {*/
+/*    grid-template-columns: repeat(2, 2fr);*/
+/*    column-gap: 33%;*/
+/*  }*/
+
+/*  .about-me__img {*/
+/*    justify-self: end;*/
+/*  }*/
+/*}*/
 .about-me {
   display: flex;
   flex-direction: column;

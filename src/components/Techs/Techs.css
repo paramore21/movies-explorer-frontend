@@ -63,6 +63,16 @@
   }
 }
 
+@media screen and (min-width: 960px) {
+  .techs {
+    align-items: center;
+  }
+
+  .techs__title {
+    align-self: normal;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .techs {
     padding: 100px 70px;
