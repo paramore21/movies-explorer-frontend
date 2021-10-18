@@ -84,10 +84,13 @@
   }
 
   .header__burger-item:last-of-type {
+    display: flex;
+    justify-content: center;
     position: absolute;
     bottom: 22px;
-    right: 0;
+    width: 100%;
     left: 0;
+    box-sizing: border-box;
   }
 
   .header__burger-item {
@@ -331,6 +334,9 @@
   width: 100%;
 }
 
+.header__burger-account-button {
+
+}
 .header__burger-account-button:hover {
   text-decoration: none;
   cursor: pointer;
