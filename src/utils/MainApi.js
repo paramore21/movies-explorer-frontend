@@ -21,3 +21,18 @@ export const register = ({email, name, password}) => {
   })
   .then(res => _checkResponse(res))
 }
+
+
+export const login = ({email, password}) => {
+  return fetch(`${baseUrl}/signin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "email": email,
+      "password": password
+    })
+  })
+    .then(res => _checkResponse(res))
+}
