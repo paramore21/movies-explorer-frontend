@@ -7,16 +7,35 @@ import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import * as MainApi from "../../utils/MainApi"
 
 function App() {
+  const history = useHistory()
+
+  function handleRegister({email, name, password}){
+    MainApi.register(email, name, password).then(() => {
+      history.push('/login')
+    })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  function handleLogin({email, password}) {
+    MainApi.login(email, password).then((res) => {
+      localStorage.setItem('token', `${res.token}`)
+      history.push('/')
+    })
+      .catch(err => console.log(err))
+  }
   const { pathname } = useLocation()
   return (
     <div className="App">
       <Switch>
         <Route path="/signup">
-          <Register />
+          <Register onRegister={handleRegister}/>
         </Route>
-        <Route path="/signin">
+        <Route path="/signin" onLogin={handleLogin}>
           <Login />
         </Route>
       </Switch>
