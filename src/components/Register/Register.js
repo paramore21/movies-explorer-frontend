@@ -20,8 +20,9 @@ function Register({onRegister}) {
   }
 
   function handleSubmit(e) {
+    console.log(email, name, password)
     e.preventDefault()
-    onRegister({email, name, password})
+    onRegister(email, name, password)
   }
   return (
     <section className='register'>

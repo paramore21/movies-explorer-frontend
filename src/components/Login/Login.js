@@ -15,9 +15,9 @@ function Login({onLogin}) {
     setPassword(e.target.value)
   }
 
-  function  handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault()
-    onLogin({email, password})
+    onLogin(email, password)
   }
   return (
     <section className='login'>

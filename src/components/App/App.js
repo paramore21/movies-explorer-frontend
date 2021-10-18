@@ -12,17 +12,18 @@ import * as MainApi from "../../utils/MainApi"
 function App() {
   const history = useHistory()
 
-  function handleRegister({email, name, password}){
-    MainApi.register(email, name, password).then(() => {
-      history.push('/login')
+  function handleRegister(email, name, password){
+    console.log(email, name, password)
+    MainApi.register({email, name, password}).then(() => {
+      history.push('/signin')
     })
       .catch(err => {
         console.log(err)
       })
   }
 
-  function handleLogin({email, password}) {
-    MainApi.login(email, password).then((res) => {
+  function handleLogin(email, password) {
+    MainApi.login({email, password}).then((res) => {
       localStorage.setItem('token', `${res.token}`)
       history.push('/')
     })
@@ -35,8 +36,8 @@ function App() {
         <Route path="/signup">
           <Register onRegister={handleRegister}/>
         </Route>
-        <Route path="/signin" onLogin={handleLogin}>
-          <Login />
+        <Route path="/signin">
+          <Login  onLogin={handleLogin} />
         </Route>
       </Switch>
         <Route path='/' exact>

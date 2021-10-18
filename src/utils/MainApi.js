@@ -4,7 +4,7 @@ const _checkResponse = (res) => {
   if(res.ok) {
     return res.json()
   }
-  return Promise.reject(`Ошибка: ${res.status}, ${res.message}`)
+  return Promise.reject(`Ошибка: ${res}`)
 }
 
 export const register = ({email, name, password}) => {
