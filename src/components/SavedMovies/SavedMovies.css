@@ -1,0 +1,20 @@
+.saved-movies-card__button {
+    border: none;
+    outline: none;
+    background-color: #F9F9F9;
+    border-radius: 30px;
+    width: 100px;
+    height: 29px;
+    align-self: center;
+    margin: 18px 0;
+    background-image: url('../../images/cancel-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.saved-movies-card__button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}

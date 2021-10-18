@@ -1,0 +1,111 @@
+@media screen and (min-width: 320px){
+  .search-form {
+    padding: 85px 14px 0;
+  }
+  .search-form__input {
+    max-width: 80%;
+  }
+  .search-form__input-icon {
+    display: none;
+  }
+
+  .search-form__input::placeholder {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+  }
+
+  .search-form__input {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .search-form {
+    padding: 86px 36px;
+  }
+
+  .search-form__input::placeholder {
+    font-size: 28px;
+    line-height: 34px;
+    text-align: center;
+  }
+
+  .search-form__input-icon {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .search-form {
+    padding: 70px;
+  }
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form__input-container {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.search-form__input-icon {
+  background-image: url('../../images/search_icon.svg');
+  background-color: transparent;
+  border: 1px solid #E8E8E8;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+}
+
+.search-form__input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  text-align: center;
+  color: #000;
+}
+
+.search-form__input:focus {
+  border-bottom: 1px solid #A0A0A0;
+}
+
+.search-form__input::placeholder {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #A0A0A0;
+}
+
+.search-form__input-button {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3456F3;
+  border-radius: 48px;
+  border: none;
+  outline: none;
+  padding: 8px 11px;
+}
+
+.search-form__input-button:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}

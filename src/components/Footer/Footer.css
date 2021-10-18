@@ -1,0 +1,133 @@
+@media screen and (min-width: 320px){
+  .footer {
+    padding: 88px 10px 10px;
+  }
+  .footer__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__nav {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .footer__nav-year {
+    color: #A0A0A0;
+    margin-top: 10px;
+  }
+
+  .footer__nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__nav-links-item {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .footer {
+    padding: 45px 30px 20px;
+  }
+
+  .footer__nav-year {
+    margin-top: 0;
+  }
+  
+  .footer__nav {
+    margin: 0;
+    flex-direction: row;
+  }
+
+  .footer__nav-links {
+    flex-direction: row;
+    margin-top: 20px;
+    width: 263px;
+  }
+}
+
+@media screen and (min-width: 1280px){
+  .footer {
+    padding: 40px 70px 20px 70px;
+  }
+  
+  .footer__nav-year {
+    color: #000000;
+    margin: 0;
+  }
+  
+  .footer__nav-links-item {
+    margin-right: 20px;
+  }
+
+  .footer__nav-links-item:last-child {
+    margin-right: 0;
+  }
+
+  .footer__title {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__title {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  color: #A0A0A0;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.footer__nav-year {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  list-style: none;
+}
+
+.footer__nav-links {
+  display: flex;
+  justify-content: space-between;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  padding: 0;
+}
+
+.footer__nav-links-item {
+  list-style: none;
+}
+
+.footer__nav-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer__nav-link:hover {
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
