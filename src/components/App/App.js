@@ -25,7 +25,7 @@ function App() {
   function handleLogin(email, password) {
     MainApi.login({email, password}).then((res) => {
       localStorage.setItem('token', `${res.token}`)
-      history.push('/')
+      history.push('/movies')
     })
       .catch(err => console.log(err))
   }

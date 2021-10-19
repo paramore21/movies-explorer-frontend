@@ -222,7 +222,7 @@
 
 .about-project__progress {
   display: grid;
-  grid-template-areas: 'green gray'
+  grid-template-areas: 'green item-gray'
   'sign1 sign2';
   grid-template-rows: 36px 17px;
 }
@@ -251,7 +251,7 @@
 }
 
 .about-project__progress-item_gray {
-  grid-area: gray;
+  grid-area: item-gray;
   background-color: #F2F2F2;
 }
 
