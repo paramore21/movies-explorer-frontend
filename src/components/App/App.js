@@ -13,6 +13,7 @@ import * as MainApi from "../../utils/MainApi";
 function App() {
   const history = useHistory()
   const [currentUserContext, setCurrentUserContext] = useState({})
+  const [movies, setMovies] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
 
   function handleRegister(email, name, password){
