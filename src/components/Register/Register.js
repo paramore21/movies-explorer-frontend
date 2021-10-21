@@ -1,6 +1,7 @@
 import logo from '../../images/logo.png';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useFormWithValidation } from "../../utils/hooks/CustomHooks";
 
 function Register({onRegister}) {
   const [email, setEmail] = useState("")
@@ -20,9 +21,16 @@ function Register({onRegister}) {
   }
 
   function handleSubmit(e) {
-    console.log(email, name, password)
     e.preventDefault()
-    onRegister(email, name, password)
+    const {values, errors, isValid, handleChange} = useFormWithValidation({
+      name: "",
+      email: "",
+      password: ""
+    });
+    const {email, name, password} = inputValues
+    if (isValid) {
+      onRegister(email, name, password)
+    }
   }
   return (
     <section className='register'>
