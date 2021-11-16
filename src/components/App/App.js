@@ -9,6 +9,7 @@ import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import { UserContext } from "../../Context/UserContext";
 import * as MainApi from "../../utils/MainApi";
+import * as MoviesApi from '../../utils/MoviesApi';
 
 function App() {
   const history = useHistory()
@@ -56,11 +57,29 @@ function App() {
       .then(res => {
         if(res){
           setCurrentUserContext(res)
-          //setLoggedIn(true)
-          //history.push('/movies')
+          setLoggedIn(true)
+        }
+      })
+      .then(() => {
+        if(token && loggedIn) {
+          MoviesApi.getCards()
+            .then(res => {
+              setMovies(res)
+            })
         }
       })
   }, [loggedIn])
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token')
+  //   if(token && loggedIn) {
+  //     MoviesApi.getCards()
+  //       .then(res => {
+  //         setMovies(res)
+  //       })
+  //   }
+  // }, [loggedIn])
+
   const { pathname } = useLocation()
   return (
     <div className="App">
@@ -77,7 +96,9 @@ function App() {
           <Main />
         </Route>
         <Route path='/movies'>
-          <Movies />
+          <Movies
+            movies={movies}
+          />
         </Route>
         <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
           <Error />

@@ -22,7 +22,6 @@ function Profile({onLogout, onUpdateUser}){
   }
 
   function handleSubmit(e) {
-    console.log(e)
     e.preventDefault()
     onUpdateUser({name, email})
   }
@@ -37,10 +36,10 @@ function Profile({onLogout, onUpdateUser}){
           <input type='text' className='profile__span' required minLength='2' maxLength='200' value={name || ""} placeholder='Имя' onChange={handleNameChange}/>
           <p className='profile__label'>E-mail</p>
           <input type='email' className='profile__span' required minLength='2' maxLength='200' value={email || ""} placeholder='E-mail' onChange={handleEmailChange}/>
-          <p className='profile__enter-text' onClick={handleSubmit}>Редактировать</p>
         </form>
       </section>
       <section className='profile__footer'>
+        <button className='profile__edit-button' onClick={handleSubmit}>Редактировать</button>
         <Link to='/' className='profile__enter-link' onClick={onLogout}>Выйти из аккаунта</Link>
       </section>
     </>

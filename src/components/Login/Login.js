@@ -24,10 +24,10 @@ function Login({onLogin}) {
       <a href={'/'} className='login__icon'><img alt='Логотип' src={icon} /></a>
       <h3 className='login__title'>Рады видеть!</h3>
       <form className='login__form' onSubmit={handleSubmit}>
-        <label for='email' className='login__label'>E-mail</label>
+        <label htmlFor='email' className='login__label'>E-mail</label>
         <input type='email' id='email' className='login__input' onChange={handleEmailChange} value={email || ""}/>
         <span className="login__error" id="login__email__error"></span>
-        <label for='password' className='login__label'>Пароль</label>
+        <label htmlFor='password' className='login__label'>Пароль</label>
         <input id='password' type='password' className='login__input' onChange={handlePasswordChange} value={password || ""}/>
         <span className="login__error" id="login__password__error"></span>
         <button type='submit' className='login__button'>Войти</button>
