@@ -70,16 +70,6 @@ function App() {
       })
   }, [loggedIn])
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token')
-  //   if(token && loggedIn) {
-  //     MoviesApi.getCards()
-  //       .then(res => {
-  //         setMovies(res)
-  //       })
-  //   }
-  // }, [loggedIn])
-
   const { pathname } = useLocation()
   return (
     <div className="App">
