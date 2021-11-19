@@ -16,6 +16,7 @@ function App() {
   const [currentUserContext, setCurrentUserContext] = useState({})
   const [movies, setMovies] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
+  const [savedMovies, setSavedMovies] = useState([])
 
   function handleRegister(email, name, password){
     MainApi.register({email, name, password}).then(() => {
@@ -68,7 +69,20 @@ function App() {
             })
         }
       })
+      .then(() => {
+        MainApi.getSavedMovies()
+          .then(res => {
+            setSavedMovies(res.data)
+          })
+      })
   }, [loggedIn])
+
+  function saveMovie(id) {
+    MainApi.saveMovie(id)
+      .then(res => {
+        setSavedMovies([res, ...savedMovies])
+      })
+  }
 
   const { pathname } = useLocation()
   return (
@@ -100,7 +114,10 @@ function App() {
           />
         </Route>
       <Route path='/saved-movies'>
-        <SavedMovies />
+        <SavedMovies
+          movies={savedMovies}
+          saveMovie={saveMovie}
+        />
       </Route>
     </UserContext.Provider>
     </div>

@@ -1,5 +1,8 @@
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
-function SearchForm(){
+function SearchForm({chooseShortFilm}){
+  function handleClick(event){
+    chooseShortFilm(event)
+  }
   return(
     <section className='search-form'>
       <div className='search-form__input-container'>
@@ -7,7 +10,7 @@ function SearchForm(){
         <input className='search-form__input' type='text' placeholder='Фильм' name='search-form' required />
         <button className='search-form__input-button' type='submit'>Найти</button>
       </div>
-      <FilterCheckbox />
+      <FilterCheckbox handleCheckbox={handleClick}/>
     </section>
   )
 }

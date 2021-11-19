@@ -45,10 +45,57 @@ export const updateUser = ({email, name}) => {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
     body: JSON.stringify({
-      "email": email,
-      "name": name
+      email,
+      name
     })
   })
+}
+
+export const getSavedMovies = () => {
+  return fetch(`${baseUrl}/movies`, {
+    method: "GET",
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then(res => _checkResponse(res))
+}
+
+export const saveMovie = (movie) => {
+  const {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailer,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId
+  } = movie
+  return fetch(`${baseUrl}/movies`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify({
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailer,
+      nameRU,
+      nameEN,
+      thumbnail,
+      movieId
+    })
+  })
+    .then(res => _checkResponse(res))
 }
 
 export const checkToken = (token) => {

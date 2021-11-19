@@ -4,16 +4,21 @@ import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies(){
+function SavedMovies({movies, saveMovie}){
   return (
     <>
       <Header />
       <SearchForm />
       <section className='movies'>
         <section className='movies__cards'>
-          <MoviesCardList />
-          <MoviesCardList />
-          <MoviesCardList />
+          {movies.map(elem => (
+            <MoviesCardList
+              movie={elem}
+              key={elem.movieId}
+              isSavedMovie={true}
+              saveMovie={saveMovie}
+            />
+          ))}
         </section>
       </section>
       <Footer />
