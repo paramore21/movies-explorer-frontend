@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function Movies({movies}){
+function Movies({movies, isLoggedIn}){
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [moviesArray, setMoviesArray] = useState([])
   const [isShort, setIsShort] = useState(false)
@@ -39,7 +39,7 @@ function Movies({movies}){
   }
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn}/>
       <SearchForm chooseShortFilm={handleShortFilm}/>
       <section className='movies'>
         <section className='movies__cards'>

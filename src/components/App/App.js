@@ -97,26 +97,29 @@ function App() {
         </Route>
       </Switch>
         <Route path='/' exact>
-          <Main />
+          <Main isLoggedIn={loggedIn}/>
         </Route>
         <Route path='/movies'>
           <Movies
             movies={movies}
+            isLoggedIn={loggedIn}
           />
         </Route>
         <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
           <Error />
         </Route>
         <Route path='/profile'>
-          < Profile
+          <Profile
             onLogout={handleLogout}
             onUpdateUser={handleUpdateUser}
+            isLoggedIn={loggedIn}
           />
         </Route>
       <Route path='/saved-movies'>
         <SavedMovies
           movies={savedMovies}
           saveMovie={saveMovie}
+          isLoggedIn={loggedIn}
         />
       </Route>
     </UserContext.Provider>

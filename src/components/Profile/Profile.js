@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import { UserContext } from "../../Context/UserContext"
-import Header from "../Header/Header";
-import {Link} from "react-router-dom";
-function Profile({onLogout, onUpdateUser}){
+import React, { useState } from 'react'
+import { UserContext } from '../../Context/UserContext'
+import Header from '../Header/Header';
+import {Link} from 'react-router-dom';
+function Profile({onLogout, onUpdateUser, isLoggedIn}){
   const currentUser = React.useContext(UserContext)
 
   const [name, setName] = useState('')
@@ -23,19 +23,38 @@ function Profile({onLogout, onUpdateUser}){
 
   function handleSubmit(e) {
     e.preventDefault()
-    onUpdateUser({name, email})
+    onUpdateUser(email, name)
   }
 
   return(
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn}/>
       <section className='profile'>
         <h3 className='profile__title'>Привет, {name}!</h3>
         <form className='profile__form' onSubmit={handleSubmit}>
           <p className='profile__label'>Имя</p>
-          <input type='text' className='profile__span' required minLength='2' maxLength='200' value={name || ""} placeholder='Имя' onChange={handleNameChange}/>
+          <input
+            type='text'
+            className='profile__span'
+            required minLength='2'
+            maxLength='200'
+            value={name || ''}
+            placeholder='Имя'
+            onChange={handleNameChange}
+            name='name'
+          />
           <p className='profile__label'>E-mail</p>
-          <input type='email' className='profile__span' required minLength='2' maxLength='200' value={email || ""} placeholder='E-mail' onChange={handleEmailChange}/>
+          <input
+            type='email'
+            className='profile__span'
+            required
+            minLength='2'
+            maxLength='200'
+            value={email || ''}
+            placeholder='E-mail'
+            onChange={handleEmailChange}
+            name='email'
+          />
         </form>
       </section>
       <section className='profile__footer'>

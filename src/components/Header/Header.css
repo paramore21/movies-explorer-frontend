@@ -343,3 +343,15 @@
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
 }
+
+.header__login-button_bg-light {
+  border: 2px solid #AAAAAA;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background-image: url('../../images/account-icon.svg');
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+  background-color: #fff;
+  padding-left: 15px;
+  width: 100px;
+}

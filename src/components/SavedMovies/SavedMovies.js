@@ -4,10 +4,10 @@ import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies({movies, saveMovie}){
+function SavedMovies({movies, saveMovie, isLoggedIn}){
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn}/>
       <SearchForm />
       <section className='movies'>
         <section className='movies__cards'>

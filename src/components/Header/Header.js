@@ -3,9 +3,9 @@ import close_icon from '../../images/close-icon.svg';
 import burger_icon from '../../images/burger-icon.svg';
 import {useLocation} from "react-router-dom";
 import {useState} from "react";
-function Header() {
+function Header({isLoggedIn}) {
   const { pathname } = useLocation()
-  const buttonText = `${pathname === '/' ? 'Войти' : 'Аккаунт'}`
+  const buttonText = `${isLoggedIn ? 'Войти' : 'Аккаунт'}`
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   function handleMenuOpen(){
     setIsMenuOpen(!isMenuOpen)
@@ -19,9 +19,13 @@ function Header() {
             <a href={'/movies'} className={`${pathname === '/' ? 'header__films-no-display' : 'header__movie_bold'}`}>Фильмы</a>
             <a href={'/saved-movies'} className={`${pathname === '/' ? 'header__films-no-display' : 'header__movie_light'}`}>Сохраненные фильмы</a>
           </div>
-          <div className='header__buttons'>
+          <div className={isLoggedIn ? 'header__display-none' : 'header__buttons'}>
             <a href={'/signup'} className={`${pathname === '/' ? 'header__register-button' : 'header__register-button header__register-button_light'}`}>Регистрация</a>
             <a href={pathname === '/'? '/signin' : '/profile'} className={`${pathname === '/' ? 'header__login-button' : 'header__login-button header__login-button_light'}`}>{buttonText}</a>
+          </div>
+
+          <div className={!isLoggedIn ? 'header__display-none' : 'header__buttons'}>
+            <a href='/profile' className='header__login-button header__login-button_bg-light'>Акканут</a>
           </div>
 
         </section>
