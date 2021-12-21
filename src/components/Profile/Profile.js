@@ -1,29 +1,25 @@
-import React, { useState } from 'react'
-import { UserContext } from '../../Context/UserContext'
+import { useState, useEffect, useContext } from 'react'
+import UserContext from '../../Context/UserContext'
 import Header from '../Header/Header';
 import {Link} from 'react-router-dom';
+import useFormWithValidation from "../../utils/hooks/CustomHooks";
 function Profile({onLogout, onUpdateUser, isLoggedIn}){
-  const currentUser = React.useContext(UserContext)
+  const {email, name} = useContext(UserContext)
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [hasChanged, setHasChanged] = useState(false)
 
-  React.useEffect(() => {
-    setName(currentUser.name)
-    setEmail(currentUser.email)
-  }, [currentUser])
+  const {values, handleChange} = useFormWithValidation({ email, name });
 
-  function handleNameChange(e){
-    setName(e.target.value)
-  }
+  useEffect(() => {
+    setHasChanged(!(values.name === name) || !(values.email === email))
+  }, [values.name, values.email, name, email])
 
-  function handleEmailChange(e){
-    setEmail(e.target.value)
-  }
 
   function handleSubmit(e) {
     e.preventDefault()
-    onUpdateUser(email, name)
+    console.log(values)
+    const {email, name} = values
+    onUpdateUser({email, name})
   }
 
   return(
@@ -38,9 +34,9 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             className='profile__span'
             required minLength='2'
             maxLength='200'
-            value={name || ''}
-            placeholder='Имя'
-            onChange={handleNameChange}
+            onChange={handleChange}
+            value={values.name}
+            placeholder={name}
             name='name'
           />
           <p className='profile__label'>E-mail</p>
@@ -50,15 +46,15 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             required
             minLength='2'
             maxLength='200'
-            value={email || ''}
-            placeholder='E-mail'
-            onChange={handleEmailChange}
+            onChange={handleChange}
+            value={values.email}
+            placeholder={email}
             name='email'
           />
         </form>
       </section>
       <section className='profile__footer'>
-        <button className='profile__edit-button' onClick={handleSubmit}>Редактировать</button>
+        <button className='profile__edit-button' onClick={handleSubmit} disabled={!hasChanged}>Редактировать</button>
         <Link to='/' className='profile__enter-link' onClick={onLogout}>Выйти из аккаунта</Link>
       </section>
     </>

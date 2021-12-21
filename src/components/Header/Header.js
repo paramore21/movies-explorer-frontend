@@ -5,7 +5,7 @@ import {useLocation} from "react-router-dom";
 import {useState} from "react";
 function Header({isLoggedIn}) {
   const { pathname } = useLocation()
-  const buttonText = `${isLoggedIn ? 'Войти' : 'Аккаунт'}`
+  const buttonText = `${isLoggedIn ? 'Аккаунт' : 'Войти'}`
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   function handleMenuOpen(){
     setIsMenuOpen(!isMenuOpen)
@@ -25,7 +25,7 @@ function Header({isLoggedIn}) {
           </div>
 
           <div className={!isLoggedIn ? 'header__display-none' : 'header__buttons'}>
-            <a href='/profile' className='header__login-button header__login-button_bg-light'>Акканут</a>
+            <a href={'/profile'} className='header__login-button header__login-button_bg-light'>Акканут</a>
           </div>
 
         </section>

@@ -37,17 +37,14 @@ export const login = ({email, password}) => {
     .then(res => _checkResponse(res))
 }
 
-export const updateUser = ({email, name}) => {
+export const updateUser = (data) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
-    body: JSON.stringify({
-      email,
-      name
-    })
+    body: JSON.stringify(data)
   })
 }
 

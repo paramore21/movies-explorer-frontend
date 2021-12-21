@@ -30,7 +30,7 @@ function Login({onLogin}) {
         <label htmlFor='password' className='login__label'>Пароль</label>
         <input id='password' type='password' className='login__input' onChange={handlePasswordChange} value={password || ""}/>
         <span className="login__error" id="login__password__error"></span>
-        <button type='submit' className='login__button'>Войти</button>
+        <button type='submit' className='login__button' onSubmit={handleSubmit}>Войти</button>
       </form>
       <p className='login__enter-text'>Ещё не зарегестрированы? <Link to='/signup' className='login__enter-link'>Регистрация</Link></p>
     </section>

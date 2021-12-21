@@ -7,7 +7,7 @@ import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import { UserContext } from "../../Context/UserContext";
+import UserContext from "../../Context/UserContext";
 import * as MainApi from "../../utils/MainApi";
 import * as MoviesApi from '../../utils/MoviesApi';
 
@@ -31,7 +31,6 @@ function App() {
     MainApi.login({email, password}).then((res) => {
       localStorage.setItem('token', `${res.token}`)
       setLoggedIn(true)
-
       history.push('/movies')
     })
       .catch(err => console.log(err))
@@ -44,8 +43,8 @@ function App() {
     history.push('/sign-in');
   }
 
-  function handleUpdateUser(email, name) {
-    return MainApi.updateUser({email, name})
+  function handleUpdateUser(data) {
+    return MainApi.updateUser(data)
       .then(res => {
         setCurrentUserContext(res)
       })

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
+import Preloader from "../Preloader/Preloader";
 import Footer from '../Footer/Footer';
 
 function Movies({movies, isLoggedIn}){
@@ -40,6 +41,7 @@ function Movies({movies, isLoggedIn}){
   return (
     <>
       <Header isLoggedIn={isLoggedIn}/>
+      <Preloader />
       <SearchForm chooseShortFilm={handleShortFilm}/>
       <section className='movies'>
         <section className='movies__cards'>
