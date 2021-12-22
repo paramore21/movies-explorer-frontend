@@ -76,7 +76,7 @@ function App() {
   function handleUpdateUser(data) {
     return MainApi.updateUser(data)
       .then(res => {
-        setCurrentUserContext(res)
+        setCurrentUserContext(res.data)
       })
       .catch(err => console.log(err))
   }

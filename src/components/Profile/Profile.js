@@ -4,32 +4,34 @@ import Header from '../Header/Header';
 import {Link} from 'react-router-dom';
 import useFormWithValidation from "../../utils/hooks/CustomHooks";
 function Profile({onLogout, onUpdateUser, isLoggedIn}){
-  const currentUser = useContext(UserContext);
-  const [hasChanged, setIsHasChanged] = useState(false);
-  const nameNew = useRef('');
-  const emailNew = useRef('');
-  const {values, handleChange } = useFormWithValidation({
-    name: nameNew.current.value,
-    email: emailNew.current.value
+  const { email, name } = useContext(UserContext);
+  const newName = useRef("")
+  const newEmail = useRef("")
+
+  const { values, handleChange } = useFormWithValidation({
+    email: newEmail.current.value,
+    name: newName.current.value
   });
+  const [hasChanges, setHasChanges] = useState(true);
 
   useEffect(() => {
-    setIsHasChanged(!(values.name === currentUser.name) || !(values.email === currentUser.email));
-  }, [values.name, values.email, currentUser.name, currentUser.email]);
+    setHasChanges(newEmail.current.value === name && newName.current.value === email);
+  }, [values.name, values.email, name, email]);
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = nameNew.current.value;
-    const email = emailNew.current.value;
-    onUpdateUser({name, email});
-  }
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    const data = {
+      email: newEmail.current.value,
+      name: newName.current.value
+    }
+    onUpdateUser(data);
+  };
 
   return(
     <>
       <Header isLoggedIn={isLoggedIn}/>
       <section className='profile'>
-        <h3 className='profile__title'>Привет, {currentUser.name}!</h3>
+        <h3 className='profile__title'>Привет, {name}!</h3>
         <form className='profile__form' onSubmit={handleSubmit}>
           <p className='profile__label'>Имя</p>
           <input
@@ -38,9 +40,10 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             required minLength='2'
             maxLength='200'
             onChange={handleChange}
-            defaultValue={currentUser.name}
-            ref={nameNew}
+            defaultValue={name}
+            placeholder={name}
             name='name'
+            ref={newName}
           />
           <p className='profile__label'>E-mail</p>
           <input
@@ -50,14 +53,15 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             minLength='2'
             maxLength='200'
             onChange={handleChange}
-            defaultValue={currentUser.email}
-            ref={emailNew}
+            placeholder={email}
+            defaultValue={email}
             name='email'
+            ref={newEmail}
           />
         </form>
       </section>
       <section className='profile__footer'>
-        <button className='profile__edit-button' onClick={handleSubmit} disabled={!hasChanged}>Редактировать</button>
+        <button className='profile__edit-button' onClick={handleSubmit} disabled={hasChanges}>Редактировать</button>
         <Link to='/' className='profile__enter-link' onClick={onLogout}>Выйти из аккаунта</Link>
       </section>
     </>
