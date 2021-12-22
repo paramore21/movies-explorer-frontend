@@ -18,6 +18,34 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
 
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token){
+      MainApi.getUserInfo(token)
+        .then(res => {
+          if(res){
+            setLoggedIn(true)
+          }
+        })
+        .catch(error => {
+          console.log(error)
+          history.push("/signin")
+        })
+
+    }
+  }, [])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(loggedIn) {
+      Promise.all([MainApi.getUserInfo(token), MoviesApi.getCards()])
+        .then(([userData, moviesData]) => {
+          setCurrentUserContext(userData)
+          setMovies(moviesData)
+        })
+    }
+  }, [loggedIn])
+
   function handleRegister(email, name, password){
     MainApi.register({email, name, password}).then(() => {
       history.push('/signin')
@@ -29,9 +57,11 @@ function App() {
 
   function handleLogin(email, password) {
     MainApi.login({email, password}).then((res) => {
-      localStorage.setItem('token', `${res.token}`)
-      setLoggedIn(true)
-      history.push('/movies')
+      if(res.token){
+        localStorage.setItem('token', `${res.token}`)
+        setLoggedIn(true)
+        history.push('/movies')
+      }
     })
       .catch(err => console.log(err))
   }
@@ -51,36 +81,16 @@ function App() {
       .catch(err => console.log(err))
   }
 
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    MainApi.checkToken(token)
-      .then(res => {
-        if(res){
-          setCurrentUserContext(res)
-          setLoggedIn(true)
-        }
-      })
-      .then(() => {
-        if(token && loggedIn) {
-          MoviesApi.getCards()
-            .then(res => {
-              setMovies(res)
-            })
-        }
-      })
-      .then(() => {
-        MainApi.getSavedMovies()
-          .then(res => {
-            setSavedMovies(res.data)
-          })
-      })
-  }, [loggedIn])
 
   function saveMovie(id) {
     MainApi.saveMovie(id)
       .then(res => {
         setSavedMovies([res, ...savedMovies])
       })
+  }
+
+  function handleSearch(searchValue) {
+
   }
 
   const { pathname } = useLocation()

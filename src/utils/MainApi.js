@@ -95,7 +95,7 @@ export const saveMovie = (movie) => {
     .then(res => _checkResponse(res))
 }
 
-export const checkToken = (token) => {
+export const getUserInfo = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {

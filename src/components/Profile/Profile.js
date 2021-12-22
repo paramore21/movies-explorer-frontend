@@ -1,32 +1,35 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useRef } from 'react'
 import UserContext from '../../Context/UserContext'
 import Header from '../Header/Header';
 import {Link} from 'react-router-dom';
 import useFormWithValidation from "../../utils/hooks/CustomHooks";
 function Profile({onLogout, onUpdateUser, isLoggedIn}){
-  const {email, name} = useContext(UserContext)
-
-  const [hasChanged, setHasChanged] = useState(false)
-
-  const {values, handleChange} = useFormWithValidation({ email, name });
+  const currentUser = useContext(UserContext);
+  const [hasChanged, setIsHasChanged] = useState(false);
+  const nameNew = useRef('');
+  const emailNew = useRef('');
+  const {values, handleChange } = useFormWithValidation({
+    name: nameNew.current.value,
+    email: emailNew.current.value
+  });
 
   useEffect(() => {
-    setHasChanged(!(values.name === name) || !(values.email === email))
-  }, [values.name, values.email, name, email])
+    setIsHasChanged(!(values.name === currentUser.name) || !(values.email === currentUser.email));
+  }, [values.name, values.email, currentUser.name, currentUser.email]);
 
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log(values)
-    const {email, name} = values
-    onUpdateUser({email, name})
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = nameNew.current.value;
+    const email = emailNew.current.value;
+    onUpdateUser({name, email});
   }
 
   return(
     <>
       <Header isLoggedIn={isLoggedIn}/>
       <section className='profile'>
-        <h3 className='profile__title'>Привет, {name}!</h3>
+        <h3 className='profile__title'>Привет, {currentUser.name}!</h3>
         <form className='profile__form' onSubmit={handleSubmit}>
           <p className='profile__label'>Имя</p>
           <input
@@ -35,8 +38,8 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             required minLength='2'
             maxLength='200'
             onChange={handleChange}
-            value={values.name}
-            placeholder={name}
+            defaultValue={currentUser.name}
+            ref={nameNew}
             name='name'
           />
           <p className='profile__label'>E-mail</p>
@@ -47,8 +50,8 @@ function Profile({onLogout, onUpdateUser, isLoggedIn}){
             minLength='2'
             maxLength='200'
             onChange={handleChange}
-            value={values.email}
-            placeholder={email}
+            defaultValue={currentUser.email}
+            ref={emailNew}
             name='email'
           />
         </form>
