@@ -46,6 +46,7 @@ export const updateUser = (data) => {
     },
     body: JSON.stringify(data)
   })
+    .then(res => _checkResponse(res))
 }
 
 export const getSavedMovies = () => {
