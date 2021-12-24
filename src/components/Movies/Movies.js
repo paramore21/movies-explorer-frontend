@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Preloader from "../Preloader/Preloader";
 import Footer from '../Footer/Footer';
 
-function Movies({movies, isLoggedIn}){
+function Movies({movies, isLoggedIn, saveMovie}){
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [moviesArray, setMoviesArray] = useState([])
   const [isShort, setIsShort] = useState(false)
@@ -49,6 +49,7 @@ function Movies({movies, isLoggedIn}){
             <MoviesCardList
               movie={elem}
               key={elem.id}
+              saveMovie={saveMovie}
             />
           ))}
         </section>

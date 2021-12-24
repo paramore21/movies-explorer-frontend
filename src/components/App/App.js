@@ -83,6 +83,7 @@ function App() {
 
 
   function saveMovie(id) {
+
     MainApi.saveMovie(id)
       .then(res => {
         setSavedMovies([res, ...savedMovies])
@@ -111,6 +112,7 @@ function App() {
         <Route path='/movies'>
           <Movies
             movies={movies}
+            saveMovie={saveMovie}
             isLoggedIn={loggedIn}
           />
         </Route>
