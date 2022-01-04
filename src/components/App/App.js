@@ -10,6 +10,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import UserContext from "../../Context/UserContext";
 import * as MainApi from "../../utils/MainApi";
 import * as MoviesApi from '../../utils/MoviesApi';
+import SearchMovie from "../../utils/SearchMovie";
 
 function App() {
   const history = useHistory()
@@ -17,6 +18,7 @@ function App() {
   const [movies, setMovies] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
+  const [isShort, setIsShort] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -91,7 +93,11 @@ function App() {
   }
 
   function handleSearch(searchValue) {
+    SearchMovie(movies, searchValue, isShort)
+  }
 
+  function handleChangeCheckbox() {
+    setIsShort(!isShort);
   }
 
   const { pathname } = useLocation()
@@ -114,6 +120,8 @@ function App() {
             movies={movies}
             saveMovie={saveMovie}
             isLoggedIn={loggedIn}
+            isShort={isShort}
+            handleCheckbox={handleChangeCheckbox}
           />
         </Route>
         <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
