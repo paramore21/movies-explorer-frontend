@@ -1,7 +1,7 @@
 import {useLocation} from "react-router-dom";
 import {useState} from "react";
 
-function MoviesCardList({movie, isSavedMovie, saveMovie}){
+function MoviesCardList({movie, isSavedMovie, saveMovie, deleteMovie}){
   let {nameRU, duration} = movie
   const { pathname } = useLocation()
   const [isSaved, setIsSaved] = useState(isSavedMovie)
@@ -22,7 +22,11 @@ function MoviesCardList({movie, isSavedMovie, saveMovie}){
       nameRU: movie.nameRU,
       nameEN: movie.nameEN
     }
-    saveMovie(movieToSave)
+    if(isSaved){
+      saveMovie(movieToSave)
+    } else {
+      deleteMovie(movie.id)
+    }
     setIsSaved(!isSaved)
   }
 

@@ -106,3 +106,12 @@ export const getUserInfo = (token) => {
   })
     .then(res => _checkResponse(res))
 }
+
+export const deleteMovie = (id) => {
+  return fetch(`${baseUrl}/movies/${id}`, {
+    method: "DELETE",
+    headers: {
+      "content-Type": "application/json",
+    }
+  })
+}

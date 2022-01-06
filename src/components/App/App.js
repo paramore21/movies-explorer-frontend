@@ -33,7 +33,10 @@ function App() {
           console.log(error)
           history.push("/signin")
         })
-
+      MainApi.getSavedMovies()
+        .then(res => {
+          setSavedMovies(res.data)
+        })
     }
   }, [])
 
@@ -83,16 +86,22 @@ function App() {
       .catch(err => console.log(err))
   }
 
-
-  function saveMovie(id) {
-
-    MainApi.saveMovie(id)
+  function saveMovie(movie) {
+    MainApi.saveMovie(movie)
       .then(res => {
         setSavedMovies([res, ...savedMovies])
       })
+      .catch(err => console.log(err))
+  }
+
+  function deleteMovie(id) {
+    console.log(id)
+    // MainApi.deleteMovie(id)
+    //   .catch(err => console.log(err))
   }
 
   function handleSearch(searchValue) {
+    // todo сделать отработку поиска только по фильмам владельца осуществимой
     SearchMovie(movies, searchValue, isShort)
   }
 
@@ -122,6 +131,7 @@ function App() {
             isLoggedIn={loggedIn}
             isShort={isShort}
             handleCheckbox={handleChangeCheckbox}
+            handleSearch={handleSearch}
           />
         </Route>
         <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
@@ -139,6 +149,7 @@ function App() {
           movies={savedMovies}
           saveMovie={saveMovie}
           isLoggedIn={loggedIn}
+          deleteMovie={deleteMovie}
         />
       </Route>
     </UserContext.Provider>

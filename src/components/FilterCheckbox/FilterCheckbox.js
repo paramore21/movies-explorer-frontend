@@ -1,4 +1,5 @@
 function FilterCheckbox({isShort, handleCheckbox}) {
+
   return(
     <section className='filter-checkbox'>
       <label className='filter-checkbox__label' htmlFor='shortfilm' >
