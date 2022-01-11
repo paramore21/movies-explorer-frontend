@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Preloader from "../Preloader/Preloader";
 import Footer from '../Footer/Footer';
 
-function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch}){
+function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, handleCheckbox}){
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [moviesArray, setMoviesArray] = useState([])
 
@@ -27,8 +27,9 @@ function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch}){
     )
   }
 
-  function handleShortFilm(){
-    if(isShort){
+  function handleShortFilm(event){
+    handleCheckbox(event)
+    if(!isShort){
       setMoviesArray(movies)
     }
     else {
@@ -38,8 +39,8 @@ function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch}){
   return (
     <>
       <Header isLoggedIn={isLoggedIn}/>
-      <Preloader />
       <SearchForm handleCheckbox={handleShortFilm} isShort={isShort} searchMovies={handleSearch}/>
+      <Preloader isLoading={loading} />
       <section className='movies'>
         <section className='movies__cards'>
           {moviesArray.map((elem) => (

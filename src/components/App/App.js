@@ -19,6 +19,9 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [savedMovies, setSavedMovies] = useState([])
   const [isShort, setIsShort] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [searchedMovies, setSearchedMovies] = useState([])
+  const [isSearching, setIsSearching] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -102,7 +105,11 @@ function App() {
 
   function handleSearch(searchValue) {
     // todo сделать отработку поиска только по фильмам владельца осуществимой
-    SearchMovie(movies, searchValue, isShort)
+    setLoading(true)
+    setTimeout(() => {
+    setSearchedMovies(SearchMovie(movies, searchValue, isShort))
+      setLoading(false)
+    }, 500)
   }
 
   function handleChangeCheckbox() {
@@ -126,12 +133,13 @@ function App() {
         </Route>
         <Route path='/movies'>
           <Movies
-            movies={movies}
+            movies={searchedMovies}
             saveMovie={saveMovie}
             isLoggedIn={loggedIn}
             isShort={isShort}
             handleCheckbox={handleChangeCheckbox}
             handleSearch={handleSearch}
+            loading={loading}
           />
         </Route>
         <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
