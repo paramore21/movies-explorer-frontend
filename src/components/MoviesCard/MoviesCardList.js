@@ -1,10 +1,10 @@
 import {useLocation} from "react-router-dom";
 import {useState} from "react";
 
-function MoviesCardList({movie, isSavedMovie, saveMovie, deleteMovie}){
+function MoviesCardList({movie, saveMovie, deleteMovie}){
   let {nameRU, duration} = movie
   const { pathname } = useLocation()
-  const [isSaved, setIsSaved] = useState(isSavedMovie)
+  const [isSaved, setIsSaved] = useState(false)
   const buttonText = `${pathname === '/movies' && isSaved !== true ? 'Сохранить' : ''}`
 
   function handleButtonClick(movie){
@@ -22,7 +22,7 @@ function MoviesCardList({movie, isSavedMovie, saveMovie, deleteMovie}){
       nameRU: movie.nameRU,
       nameEN: movie.nameEN
     }
-    if(isSaved){
+    if(!isSaved){
       saveMovie(movieToSave)
     } else {
       deleteMovie(movie.id)

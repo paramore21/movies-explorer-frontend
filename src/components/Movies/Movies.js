@@ -5,13 +5,17 @@ import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Preloader from "../Preloader/Preloader";
 import Footer from '../Footer/Footer';
 
-function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, handleCheckbox}){
+function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, handleCheckbox, deleteMovie}){
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [moviesArray, setMoviesArray] = useState([])
 
   useEffect(() => {
-    setMoviesArray(movies.slice(0, showMoreHandler().movieCount))
-  }, [movies])
+    if(isShort) {
+      setMoviesArray(movies.filter(elem => elem.duration < 40))
+    } else {
+      setMoviesArray(movies.slice(0, showMoreHandler().movieCount))
+    }
+  }, [movies, isShort])
   function showMoreHandler() {
     if (windowWidth >= 1280) {
       return {movieCount: 12, addMore: 3}
@@ -48,6 +52,7 @@ function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, 
               movie={elem}
               key={elem.id}
               saveMovie={saveMovie}
+              deleteMovie={deleteMovie}
             />
           ))}
         </section>

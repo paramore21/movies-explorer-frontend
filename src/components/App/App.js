@@ -98,9 +98,8 @@ function App() {
   }
 
   function deleteMovie(id) {
-    console.log(id)
-    // MainApi.deleteMovie(id)
-    //   .catch(err => console.log(err))
+    MainApi.deleteMovie(id)
+      .catch(err => console.log(err))
   }
 
   function handleSearch(searchValue) {
@@ -135,6 +134,7 @@ function App() {
           <Movies
             movies={searchedMovies}
             saveMovie={saveMovie}
+            deleteMovie={deleteMovie}
             isLoggedIn={loggedIn}
             isShort={isShort}
             handleCheckbox={handleChangeCheckbox}
