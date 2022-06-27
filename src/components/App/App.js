@@ -11,6 +11,7 @@ import UserContext from "../../Context/UserContext";
 import * as MainApi from "../../utils/MainApi";
 import * as MoviesApi from '../../utils/MoviesApi';
 import SearchMovie from "../../utils/SearchMovie";
+import * as path from "path";
 
 function App() {
   const history = useHistory()
@@ -44,15 +45,21 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
     if(loggedIn) {
-      Promise.all([MainApi.getUserInfo(token), MoviesApi.getCards()])
+      Promise.all([MainApi.getUserInfo(), MoviesApi.getCards()])
         .then(([userData, moviesData]) => {
           setCurrentUserContext(userData)
           setMovies(moviesData)
         })
     }
   }, [loggedIn])
+
+  useEffect(() => {
+    MoviesApi.getCards()
+      .then(moviesData => {
+        setMovies(moviesData)
+    })
+  }, [])
 
   function handleRegister(email, name, password){
     MainApi.register({email, name, password}).then(() => {
@@ -90,6 +97,7 @@ function App() {
   }
 
   function saveMovie(movie) {
+    console.log(movie)
     MainApi.saveMovie(movie)
       .then(res => {
         setSavedMovies([res, ...savedMovies])
@@ -116,6 +124,7 @@ function App() {
   }
 
   const { pathname } = useLocation()
+  console.log(pathname)
   return (
     <div className="App">
       <UserContext.Provider value={currentUserContext} >
@@ -133,16 +142,16 @@ function App() {
         <Route path='/movies'>
           <Movies
             movies={searchedMovies}
-            saveMovie={saveMovie}
-            deleteMovie={deleteMovie}
+            saveMovie={(movie) => saveMovie(movie)}
             isLoggedIn={loggedIn}
             isShort={isShort}
+            deleteMovie={deleteMovie}
             handleCheckbox={handleChangeCheckbox}
             handleSearch={handleSearch}
             loading={loading}
           />
         </Route>
-        <Route path={pathname === '/' || '/saved-movies' || '/movies' || 'profile' ? '/error' : 'pathname'}>
+        <Route path={pathname !== '/' || pathname !== '/saved-movies' || pathname !== '/movies' || pathname !== '/profile' ? '/error' : pathname}>
           <Error />
         </Route>
         <Route path='/profile'>
@@ -155,7 +164,6 @@ function App() {
       <Route path='/saved-movies'>
         <SavedMovies
           movies={savedMovies}
-          saveMovie={saveMovie}
           isLoggedIn={loggedIn}
           deleteMovie={deleteMovie}
         />

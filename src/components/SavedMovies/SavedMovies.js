@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies({movies, saveMovie, isLoggedIn, deleteMovie, isSaved}){
+function SavedMovies({movies, isLoggedIn, deleteMovie}){
   return (
     <>
       <Header isLoggedIn={isLoggedIn}/>
@@ -15,8 +15,6 @@ function SavedMovies({movies, saveMovie, isLoggedIn, deleteMovie, isSaved}){
             <MoviesCardList
               movie={elem}
               key={elem.movieId}
-              isSavedMovie={isSaved}
-              saveMovie={saveMovie}
               deleteMovie={deleteMovie}
             />
           ))}

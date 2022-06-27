@@ -2,9 +2,9 @@ import {useLocation} from "react-router-dom";
 import {useState} from "react";
 
 function MoviesCardList({movie, saveMovie, deleteMovie}){
+  const [isSaved, setIsSaved] = useState(false)
   let {nameRU, duration} = movie
   const { pathname } = useLocation()
-  const [isSaved, setIsSaved] = useState(false)
   const buttonText = `${pathname === '/movies' && isSaved !== true ? 'Сохранить' : ''}`
 
   function handleButtonClick(movie){
@@ -18,13 +18,15 @@ function MoviesCardList({movie, saveMovie, deleteMovie}){
       trailer: movie.trailerLink,
       thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
       owner: 1,
-      movieId: movie.id,
+      movieId: isSaved ? movie._id : movie.id,
       nameRU: movie.nameRU,
       nameEN: movie.nameEN
     }
     if(!isSaved){
+      console.log(movieToSave.image)
       saveMovie(movieToSave)
     } else {
+      console.log(movie, movieToSave)
       deleteMovie(movie.id)
     }
     setIsSaved(!isSaved)

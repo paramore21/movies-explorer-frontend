@@ -52,7 +52,7 @@ function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, 
               movie={elem}
               key={elem.id}
               saveMovie={saveMovie}
-              deleteMovie={deleteMovie}
+              deleteMovie={(id) => deleteMovie(id)}
             />
           ))}
         </section>

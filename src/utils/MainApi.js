@@ -1,4 +1,5 @@
 const baseUrl = 'https://api.movies-diploma.nomoredomains.rocks'
+const token = `Bearer ${localStorage.getItem('token')}`
 
 const _checkResponse = (res) => {
   if(res.ok) {
@@ -27,7 +28,7 @@ export const login = ({email, password}) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       "email": email,
@@ -42,7 +43,7 @@ export const updateUser = (data) => {
     method: "PATCH",
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      authorization: token
     },
     body: JSON.stringify(data)
   })
@@ -53,7 +54,7 @@ export const getSavedMovies = () => {
   return fetch(`${baseUrl}/movies`, {
     method: "GET",
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      authorization: token
     }
   })
     .then(res => _checkResponse(res))
@@ -77,7 +78,7 @@ export const saveMovie = (movie) => {
     method: "POST",
     headers: {
       "Content-type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem('token')}`
+      authorization: token
     },
     body: JSON.stringify({
       country,
@@ -93,15 +94,16 @@ export const saveMovie = (movie) => {
       movieId
     })
   })
+    .then(() => getSavedMovies())
     .then(res => _checkResponse(res))
 }
 
-export const getUserInfo = (token) => {
+export const getUserInfo = () => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
+      authorization: token,
     }
   })
     .then(res => _checkResponse(res))
@@ -112,6 +114,7 @@ export const deleteMovie = (id) => {
     method: "DELETE",
     headers: {
       "content-Type": "application/json",
+      authorization: token
     }
   })
 }
