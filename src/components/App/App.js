@@ -54,12 +54,12 @@ function App() {
     }
   }, [loggedIn])
 
-  useEffect(() => {
-    MoviesApi.getCards()
-      .then(moviesData => {
-        setMovies(moviesData)
-    })
-  }, [])
+  // useEffect(() => {
+  //   MoviesApi.getCards()
+  //     .then(moviesData => {
+  //       setMovies(moviesData)
+  //   })
+  // }, [])
 
   function handleRegister(email, name, password){
     MainApi.register({email, name, password}).then(() => {
@@ -97,7 +97,6 @@ function App() {
   }
 
   function saveMovie(movie) {
-    console.log(movie)
     MainApi.saveMovie(movie)
       .then(res => {
         setSavedMovies([res, ...savedMovies])
@@ -124,7 +123,6 @@ function App() {
   }
 
   const { pathname } = useLocation()
-  console.log(pathname)
   return (
     <div className="App">
       <UserContext.Provider value={currentUserContext} >
@@ -142,6 +140,7 @@ function App() {
         <Route path='/movies'>
           <Movies
             movies={searchedMovies}
+            savedMovies={savedMovies}
             saveMovie={(movie) => saveMovie(movie)}
             isLoggedIn={loggedIn}
             isShort={isShort}
@@ -163,7 +162,8 @@ function App() {
         </Route>
       <Route path='/saved-movies'>
         <SavedMovies
-          movies={savedMovies}
+          movies={movies}
+          savedMovied={savedMovies}
           isLoggedIn={loggedIn}
           deleteMovie={deleteMovie}
         />

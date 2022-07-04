@@ -4,17 +4,18 @@ import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Footer from '../Footer/Footer';
 
-function SavedMovies({movies, isLoggedIn, deleteMovie}){
+function SavedMovies({movies, isLoggedIn, deleteMovie, savedMovies}){
   return (
     <>
       <Header isLoggedIn={isLoggedIn}/>
       <SearchForm />
       <section className='movies'>
         <section className='movies__cards'>
-          {movies.map(elem => (
+          {savedMovies.map(elem => (
             <MoviesCardList
               movie={elem}
               key={elem.movieId}
+              isSavedMovie={true}
               deleteMovie={deleteMovie}
             />
           ))}

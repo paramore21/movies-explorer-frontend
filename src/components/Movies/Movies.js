@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCard/MoviesCardList';
 import Preloader from "../Preloader/Preloader";
 import Footer from '../Footer/Footer';
 
-function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, handleCheckbox, deleteMovie}){
+function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, handleCheckbox, deleteMovie, savedMovies}){
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [moviesArray, setMoviesArray] = useState([])
 

@@ -1,35 +1,20 @@
 import {useLocation} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-function MoviesCardList({movie, saveMovie, deleteMovie}){
-  const [isSaved, setIsSaved] = useState(false)
+function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovies}){
+  const [isSaved, setIsSaved] = useState(isSavedMovie || false)
   let {nameRU, duration} = movie
   const { pathname } = useLocation()
   const buttonText = `${pathname === '/movies' && isSaved !== true ? 'Сохранить' : ''}`
+  const [isLiked, setIsLiked] = useState(false)
 
-  function handleButtonClick(movie){
-    let movieToSave = {
-      country: movie.country,
-      director: movie.director,
-      duration: movie.duration,
-      year: movie.year,
-      description: movie.description,
-      image: `https://api.nomoreparties.co${movie.image.url}`,
-      trailer: movie.trailerLink,
-      thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
-      owner: 1,
-      movieId: isSaved ? movie._id : movie.id,
-      nameRU: movie.nameRU,
-      nameEN: movie.nameEN
-    }
-    if(!isSaved){
-      console.log(movieToSave.image)
-      saveMovie(movieToSave)
-    } else {
-      console.log(movie, movieToSave)
-      deleteMovie(movie.id)
-    }
-    setIsSaved(!isSaved)
+  useEffect(() => {
+    checkIsSaved()
+  }, [])
+
+
+  function openTrailer() {
+    window.open(`${movie.trailerLink}`, 'trailer');
   }
 
   function getDuration() {
@@ -42,14 +27,39 @@ function MoviesCardList({movie, saveMovie, deleteMovie}){
     }
   }
 
+  function checkIsSaved () {
+    const searchMovie = savedMovies.find(item => item.movieId === movie.id)
+    searchMovie ? setIsLiked(true) : setIsLiked(false)
+  }
+
+  function handleSaveMovie(){
+
+  }
+  function handleDeleteMovie(){
+    deleteMovie(movie._id)
+  }
+
+  function handleLike() {
+    if(isLiked){
+      const searchMovie = savedMovies.find(item => item.movieId === movie.id)
+      handleDeleteMovie(searchMovie._id)
+    } else {
+      handleSaveMovie(movie)
+    }
+    setIsLiked(!isLiked)
+    //TODO доделать
+  }
+
   return (
     <section className='movies-card'>
       <div className='movies-card__header'>
         <h3 className='movies-card__title'>{nameRU}</h3>
         <p className='movies-card__duration'>{getDuration()}</p>
       </div>
-      <a href={movie.trailerLink} target='_blank'><img className='movies-card__image' src={isSaved ? movie.image : `https://api.nomoreparties.co${movie.image.url}`} alt='Постер фильма' /></a>
-      <button onClick={() => handleButtonClick(movie)} className={`${pathname === '/movies' ? isSaved ? 'movies-card__button movies-card__button_clicked' : 'movies-card__button' : 'saved-movies-card__button'}`}>{buttonText}</button>
+      <a onClick={openTrailer} target='_blank'><img className='movies-card__image' src={isSaved ? movie.image : `https://api.nomoreparties.co${movie.image.url}`} alt='Постер фильма' /></a>
+      isLiked ? <button onClick={handleLike} className="card__like-button card__like-button_liked" /> :
+      <button onClick={handleLike} className="card__like-button" /><button onClick={handleDeleteMovie} className={'movies-card__button movies-card__button_clicked'}>{buttonText}</button>
+      : <button onClick={handleSaveMovie} className={'saved-movies-card__button'}>{buttonText}</button>
     </section>
   )
 }
