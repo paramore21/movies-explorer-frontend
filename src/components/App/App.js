@@ -163,9 +163,12 @@ function App() {
       <Route path='/saved-movies'>
         <SavedMovies
           movies={movies}
-          savedMovied={savedMovies}
+          savedMovies={savedMovies}
           isLoggedIn={loggedIn}
           deleteMovie={deleteMovie}
+          handleSearch={handleSearch}
+          handleCheckbox={handleChangeCheckbox}
+          isShort={isShort}
         />
       </Route>
     </UserContext.Provider>

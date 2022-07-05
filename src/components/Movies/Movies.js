@@ -52,6 +52,7 @@ function Movies({movies, isLoggedIn, saveMovie, isShort, handleSearch, loading, 
               movie={elem}
               key={elem.id}
               saveMovie={saveMovie}
+              savedMovies={savedMovies}
               deleteMovie={(id) => deleteMovie(id)}
             />
           ))}

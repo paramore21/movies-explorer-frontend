@@ -6,7 +6,6 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
   let {nameRU, duration} = movie
   const { pathname } = useLocation()
   const buttonText = `${pathname === '/movies' && isSaved !== true ? 'Сохранить' : ''}`
-  const [isLiked, setIsLiked] = useState(false)
 
   useEffect(() => {
     checkIsSaved()
@@ -29,7 +28,7 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
 
   function checkIsSaved () {
     const searchMovie = savedMovies.find(item => item.movieId === movie.id)
-    searchMovie ? setIsLiked(true) : setIsLiked(false)
+    searchMovie ? setIsSaved(true) : setIsSaved(false)
   }
 
   function handleSaveMovie(){
@@ -39,16 +38,15 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
     deleteMovie(movie._id)
   }
 
-  function handleLike() {
-    if(isLiked){
-      const searchMovie = savedMovies.find(item => item.movieId === movie.id)
-      handleDeleteMovie(searchMovie._id)
-    } else {
-      handleSaveMovie(movie)
-    }
-    setIsLiked(!isLiked)
-    //TODO доделать
-  }
+  // function handleLike() {
+  //   if(isLiked){
+  //     const searchMovie = savedMovies.find(item => item.movieId === movie.id)
+  //     handleDeleteMovie(searchMovie._id)
+  //   } else {
+  //     handleSaveMovie(movie)
+  //   }
+  //   setIsLiked(!isLiked)
+  // }
 
   return (
     <section className='movies-card'>
@@ -57,9 +55,7 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
         <p className='movies-card__duration'>{getDuration()}</p>
       </div>
       <a onClick={openTrailer} target='_blank'><img className='movies-card__image' src={isSaved ? movie.image : `https://api.nomoreparties.co${movie.image.url}`} alt='Постер фильма' /></a>
-      isLiked ? <button onClick={handleLike} className="card__like-button card__like-button_liked" /> :
-      <button onClick={handleLike} className="card__like-button" /><button onClick={handleDeleteMovie} className={'movies-card__button movies-card__button_clicked'}>{buttonText}</button>
-      : <button onClick={handleSaveMovie} className={'saved-movies-card__button'}>{buttonText}</button>
+      <button onClick={handleDeleteMovie} className={`${pathname === '/movies' ? isSaved ? 'movies-card__button movies-card__button_clicked' : 'movies-card__button' : 'saved-movies-card__button'}`}>{buttonText}</button>
     </section>
   )
 }
