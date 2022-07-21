@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Route, Switch, Redirect, useHistory, useLocation} from 'react-router-dom';
+import {Redirect, Route, Switch, useHistory, useLocation} from 'react-router-dom';
 import Login from '../Login/Login'
 import Register from '../Register/Register'
 import Main from "../Main/Main";
@@ -7,17 +7,19 @@ import Error from "../Error/Error";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import UserContext from "../../Context/UserContext";
 import * as MainApi from "../../utils/MainApi";
 import * as MoviesApi from '../../utils/MoviesApi';
 import SearchMovie from "../../utils/SearchMovie";
-import * as path from "path";
+import {getUserInfo} from "../../utils/MainApi";
 
 function App() {
   const history = useHistory()
   const [currentUserContext, setCurrentUserContext] = useState({})
   const [movies, setMovies] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
+  const [token, setToken] = useState('');
   const [savedMovies, setSavedMovies] = useState([])
   const [isShort, setIsShort] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -27,22 +29,9 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if(token){
-      MainApi.getUserInfo(token)
-        .then(res => {
-          if(res){
-            setLoggedIn(true)
-          }
-        })
-        .catch(error => {
-          console.log(error)
-          history.push("/signin")
-        })
-      MainApi.getSavedMovies()
-        .then(res => {
-          setSavedMovies(res.data)
-        })
+      setLoggedIn(true)
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if(loggedIn) {
@@ -54,16 +43,9 @@ function App() {
     }
   }, [loggedIn])
 
-  // useEffect(() => {
-  //   MoviesApi.getCards()
-  //     .then(moviesData => {
-  //       setMovies(moviesData)
-  //   })
-  // }, [])
-
   function handleRegister(email, name, password){
     MainApi.register({email, name, password}).then(() => {
-      history.push('/signin')
+      history.push('/movies')
     })
       .catch(err => {
         console.log(err)
@@ -85,7 +67,7 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('token');
     setCurrentUserContext({})
-    history.push('/sign-in');
+    history.push('/signin');
   }
 
   function handleUpdateUser(data) {
@@ -122,55 +104,65 @@ function App() {
     setIsShort(!isShort);
   }
 
+  console.log(loggedIn)
   const { pathname } = useLocation()
   return (
     <div className="App">
       <UserContext.Provider value={currentUserContext} >
       <Switch>
-        <Route path="/signup">
-          <Register onRegister={handleRegister}/>
-        </Route>
-        <Route path="/signin">
-          <Login  onLogin={handleLogin} />
-        </Route>
-      </Switch>
         <Route path='/' exact>
           <Main isLoggedIn={loggedIn}/>
         </Route>
-        <Route path='/movies'>
-          <Movies
-            movies={searchedMovies}
-            savedMovies={savedMovies}
-            saveMovie={(movie) => saveMovie(movie)}
-            isLoggedIn={loggedIn}
-            isShort={isShort}
-            deleteMovie={deleteMovie}
-            handleCheckbox={handleChangeCheckbox}
-            handleSearch={handleSearch}
-            loading={loading}
-          />
-        </Route>
-        <Route path={pathname !== '/' || pathname !== '/saved-movies' || pathname !== '/movies' || pathname !== '/profile' ? '/error' : pathname}>
-          <Error />
-        </Route>
-        <Route path='/profile'>
-          <Profile
-            onLogout={handleLogout}
-            onUpdateUser={handleUpdateUser}
-            isLoggedIn={loggedIn}
-          />
-        </Route>
-      <Route path='/saved-movies'>
-        <SavedMovies
-          movies={movies}
+        <ProtectedRoute exact path='/movies'
+          movies={searchedMovies}
           savedMovies={savedMovies}
+          saveMovie={(movie) => saveMovie(movie)}
           isLoggedIn={loggedIn}
-          deleteMovie={deleteMovie}
-          handleSearch={handleSearch}
-          handleCheckbox={handleChangeCheckbox}
           isShort={isShort}
+          deleteMovie={deleteMovie}
+          handleCheckbox={handleChangeCheckbox}
+          handleSearch={handleSearch}
+          loading={loading}
+          component={Movies}
         />
+        <ProtectedRoute exact path='/profile'
+          component={Profile}
+          onLogout={handleLogout}
+          onUpdateUser={handleUpdateUser}
+          isLoggedIn={loggedIn}
+        />
+      <ProtectedRoute exact path='/saved-movies'
+        component={SavedMovies}
+        movies={movies}
+        savedMovies={savedMovies}
+        isLoggedIn={loggedIn}
+        deleteMovie={deleteMovie}
+        handleSearch={handleSearch}
+        handleCheckbox={handleChangeCheckbox}
+        isShort={isShort}
+      />
+        <Route exact path="/signup">
+          {!loggedIn ? (
+            <Register
+              onRegister={handleRegister}
+            />
+          ) : (
+            <Redirect to="/movies" />
+          )}
+        </Route>
+        <Route exact path="/signin">
+          {!loggedIn ? (
+            <Login
+              onLogin={handleLogin}
+            />
+          ) : (
+            <Redirect to="/movies" />
+          )}
+        </Route>
+      <Route exact path="*">
+        <Error />
       </Route>
+      </Switch>
     </UserContext.Provider>
     </div>
   );

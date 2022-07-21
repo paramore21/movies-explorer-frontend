@@ -37,7 +37,7 @@ function SavedMovies({movies, isLoggedIn, deleteMovie, savedMovies, isShort, han
   )
 }
 export default SavedMovies;
-// todo не работает редирект при защищенном роуте
+// todo не работает редирект при защищенном роуте -- почти работает, пофиксить saved movies
 // todo не работает поиск по сохраненным фильмам
 // todo не работает отображение ошибок в спаны, валидация форм на стороне клиента
 //
