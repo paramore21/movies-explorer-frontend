@@ -131,8 +131,8 @@ function App() {
           onUpdateUser={handleUpdateUser}
           isLoggedIn={loggedIn}
         />
-      <ProtectedRoute exact path='/saved-movies'
-        component={SavedMovies}
+      <Route exact path='/saved-movies'>
+        <SavedMovies
         movies={movies}
         savedMovies={savedMovies}
         isLoggedIn={loggedIn}
@@ -140,7 +140,7 @@ function App() {
         handleSearch={handleSearch}
         handleCheckbox={handleChangeCheckbox}
         isShort={isShort}
-      />
+        /></Route>
         <Route exact path="/signup">
           {!loggedIn ? (
             <Register

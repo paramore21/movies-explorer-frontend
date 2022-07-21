@@ -61,7 +61,7 @@ export const getSavedMovies = () => {
 }
 
 export const saveMovie = (movie) => {
-  const {
+  let {
     country,
     director,
     duration,
@@ -74,6 +74,8 @@ export const saveMovie = (movie) => {
     thumbnail,
     movieId
   } = movie
+
+  movieId = movieId.toString()
   return fetch(`${baseUrl}/movies`, {
     method: "POST",
     headers: {

@@ -34,8 +34,16 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
   function handleSaveMovie(){
 
   }
-  function handleDeleteMovie(){
-    deleteMovie(movie._id)
+  function handleMovie(movie){
+    if(!isSavedMovie){
+      const movieToSave = {...movie}
+      movieToSave.image = `https://api.nomoreparties.co${movie.image.url}`
+      movieToSave.movieId = movie.id
+      saveMovie(movieToSave)
+    } else {
+      deleteMovie(movie._id)
+    }
+    console.log(movie)
   }
 
   // function handleLike() {
@@ -55,7 +63,7 @@ function MoviesCardList({movie, saveMovie, deleteMovie, isSavedMovie, savedMovie
         <p className='movies-card__duration'>{getDuration()}</p>
       </div>
       <a onClick={openTrailer} target='_blank'><img className='movies-card__image' src={isSaved ? movie.image : `https://api.nomoreparties.co${movie.image.url}`} alt='Постер фильма' /></a>
-      <button onClick={handleDeleteMovie} className={`${pathname === '/movies' ? isSaved ? 'movies-card__button movies-card__button_clicked' : 'movies-card__button' : 'saved-movies-card__button'}`}>{buttonText}</button>
+      <button onClick={() => handleMovie(movie)} className={`${pathname === '/movies' ? isSaved ? 'movies-card__button movies-card__button_clicked' : 'movies-card__button' : 'saved-movies-card__button'}`}>{buttonText}</button>
     </section>
   )
 }
